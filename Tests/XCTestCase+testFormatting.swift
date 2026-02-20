@@ -75,7 +75,7 @@ extension XCTestCase {
         precondition((0 ... 2).contains(outputs.count), "Only 0, 1 or 2 output parameters permitted")
         precondition(Set(exclude).intersection(rules).isEmpty, "Cannot exclude rule under test")
         let output = outputs.first ?? input, output2 = outputs.last ?? input
-        let defaultExclusions = FormatRules.deprecated + [
+        let defaultExclusions = FormatRules.deprecated + CustomDefaultExclusions.rules + [
             .linebreakAtEndOfFile,
             .organizeDeclarations,
             .extensionAccessControl,
