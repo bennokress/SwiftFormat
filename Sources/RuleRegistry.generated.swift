@@ -122,6 +122,7 @@ let ruleRegistry: [String: FormatRule] = [
     "redundantViewBuilder": .redundantViewBuilder,
     "redundantVoidReturnType": .redundantVoidReturnType,
     "repeatedGuard": .repeatedGuard,
+    "scopePadding": .scopePadding,
     "semicolons": .semicolons,
     "simplifyGenericConstraints": .simplifyGenericConstraints,
     "singlePropertyPerLine": .singlePropertyPerLine,
