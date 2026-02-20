@@ -8,6 +8,7 @@ let package = Package(
         .library(name: "SwiftFormat", targets: ["SwiftFormat"]),
         .plugin(name: "SwiftFormatPlugin", targets: ["SwiftFormatPlugin"]),
     ],
+    dependencies: [],
     targets: [
         .executableTarget(
             name: "CommandLineTool", dependencies: ["SwiftFormat"], path: "CommandLineTool",
