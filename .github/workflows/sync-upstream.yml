@@ -1,0 +1,60 @@
+name: Sync with upstream
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # 3am CET (2am UTC)
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  rebase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.SYNC_TOKEN }}
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add upstream remote
+        run: git remote add upstream https://github.com/nicklockwood/SwiftFormat.git
+
+      - name: Configure union merge for generated files
+        # Belt and braces: .gitattributes in the repo covers local rebases,
+        # but during a replay the fork's .gitattributes may not be in the
+        # tree yet, so register the attributes at the repo level too.
+        run: |
+          echo "Rules.md merge=union" >> .git/info/attributes
+          echo "Sources/RuleRegistry.generated.swift merge=union" >> .git/info/attributes
+
+      - name: Fetch upstream
+        run: git fetch upstream
+
+      - name: Analyze and rebase
+        run: |
+          UPSTREAM_HEAD=$(git rev-parse upstream/main)
+          OUR_HEAD=$(git rev-parse HEAD)
+          MERGE_BASE=$(git merge-base HEAD upstream/main)
+
+          if [ "$OUR_HEAD" = "$UPSTREAM_HEAD" ]; then
+            echo "Scenario A: Already at the same commit. Nothing to do."
+          elif [ "$MERGE_BASE" = "$UPSTREAM_HEAD" ]; then
+            echo "Scenario B: Our commits are already on top. Nothing to do."
+          elif [ "$MERGE_BASE" = "$OUR_HEAD" ]; then
+            echo "Scenario C: Fast-forward needed."
+            git rebase upstream/main
+            git push --force-with-lease origin main
+          else
+            echo "Scenario D: Rebase needed."
+            if ! git rebase upstream/main; then
+              CONFLICTED=$(git diff --name-only --diff-filter=U | tr '\n' ' ')
+              echo "::error::Rebase failed due to conflicts in: $CONFLICTED- Manual resolution required (run /rebase locally)."
+              git rebase --abort
+              exit 1
+            fi
+            git push --force-with-lease origin main
+          fi
