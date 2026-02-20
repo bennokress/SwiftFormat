@@ -125,6 +125,7 @@
 * [blockComments](#blockComments)
 * [emptyExtensions](#emptyExtensions)
 * [ifExpressions](#ifExpressions)
+* [guardAtTopOfScope](#guardAtTopOfScope)
 * [isEmpty](#isEmpty)
 * [markTypes](#markTypes)
 * [noExplicitOwnership](#noExplicitOwnership)
@@ -1190,6 +1191,48 @@ Option | Description
 -     Environment == FooEnvironment {}
 + extension LinkedList<Foo> {}
 + extension Reducer<FooState, FooAction, FooEnvironment> {}
+```
+
+</details>
+<br/>
+
+## guardAtTopOfScope
+
+Ensure guard statements are only used appropriately within scope bodies.
+
+Option | Description
+--- | ---
+`--guard-exceptions` | Comma-delimited list of function calls to ignore for guardAtTopOfScope
+
+<details>
+<summary>Examples</summary>
+
+Guards should be at the top of their enclosing scope. Only comments and
+excepted function calls are permitted before or between consecutive guard
+statements.
+
+```diff
+  func process(value: Int?, flag: Bool) {
+      guard let value else { return }
+-     print("doing something")
+-     guard flag else { return }
++     guard flag else { return }
++     print("doing something")
+      print("all good: \(value)")
+  }
+```
+
+Use `--guard-exceptions` to allow specific function calls (e.g. logging)
+before guard statements:
+
+`--guard-exceptions print`
+
+```diff
+  func process(value: Int?) {
+      print("Processing value")
+      guard let value else { return }
+      // ...
+  }
 ```
 
 </details>

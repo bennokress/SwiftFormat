@@ -572,6 +572,17 @@ extension _Descriptors {
 }
 
 struct _Descriptors {
+    // MARK: - Custom Fork Descriptors
+
+    let guardAtTopOfScopeExceptions = OptionDescriptor(
+        argumentName: "guard-exceptions",
+        displayName: "Guard at Top of Scope Exceptions",
+        help: "Comma-delimited list of function calls to ignore for guardAtTopOfScope",
+        keyPath: \.guardAtTopOfScopeExceptions
+    )
+
+    // MARK: - Upstream Descriptors
+
     let lineAfterMarks = OptionDescriptor(
         argumentName: "line-after-marks",
         displayName: "Blank line after \"MARK\"",
