@@ -166,7 +166,8 @@ class SiteContent
 
   # Downloads Rules.md from the `develop` branch.
   def fetch_develop_rules_lines
-    stdout, stderr, status = Open3.capture3('curl', '--fail', '--silent', '--show-error', DEVELOP_RULES_URL)
+    stdout, stderr, status = Open3.capture3('curl', '--fail', '--silent', '--show-error',
+                                            '--retry', '5', '--retry-all-errors', DEVELOP_RULES_URL)
     raise "Failed to fetch develop Rules.md:\n#{stderr}" unless status.success?
 
     stdout.split("\n", -1)
