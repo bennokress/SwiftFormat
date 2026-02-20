@@ -14,5 +14,6 @@ enum CustomDefaultExclusions {
     static let rules: [FormatRule] = [
         .guardAtTopOfScope,
         .scopePadding,
+        .modifierAfterMultilineBlock,
     ]
 }

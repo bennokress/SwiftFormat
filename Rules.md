@@ -134,6 +134,7 @@
 * [guardAtTopOfScope](#guardAtTopOfScope)
 * [isEmpty](#isEmpty)
 * [markTypes](#markTypes)
+* [modifierAfterMultilineBlock](#modifierAfterMultilineBlock)
 * [noExplicitOwnership](#noExplicitOwnership)
 * [noGuardInTests](#noGuardInTests)
 * [organizeDeclarations](#organizeDeclarations)
@@ -1778,6 +1779,29 @@ Option | Description
 + // MARK: - String + FooProtocol
 +
   extension String: FooProtocol { }
+```
+
+</details>
+<br/>
+
+## modifierAfterMultilineBlock
+
+Flag modifiers chained after multi-line blocks.
+
+<details>
+<summary>Examples</summary>
+
+Chaining modifiers after multi-line blocks reduces readability. Extract the
+block content so that modifiers can be chained directly on a single-line
+expression instead.
+
+```diff
+- Button("Jump to #8") {
+-     value.scrollTo(8)
+- }
+- .padding()
++ Button("Jump to #8", action: scrollToEight)
++     .padding()
 ```
 
 </details>
