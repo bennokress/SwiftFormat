@@ -145,6 +145,7 @@
 * [propertyTypes](#propertyTypes)
 * [redundantExtendedLifetime](#redundantExtendedLifetime)
 * [redundantSendable](#redundantSendable)
+* [scopePadding](#scopePadding)
 * [singlePropertyPerLine](#singlePropertyPerLine)
 * [sortSwitchCases](#sortSwitchCases)
 * [testSuiteAccessControl](#testSuiteAccessControl)
@@ -3303,6 +3304,52 @@ Option | Description
 
 + func foo() {
     // returns nothing
+  }
+```
+
+</details>
+<br/>
+
+## scopePadding
+
+Enforce blank lines at start/end of type bodies, remove them from other scopes.
+
+Option | Description
+--- | ---
+`--scope-lines-without-padding` | Max lines in a type body to skip padding (0 = always pad)
+
+<details>
+<summary>Examples</summary>
+
+Type bodies (struct, class, enum, extension, protocol, actor) get padded
+with exactly one blank line at the start and end:
+
+```diff
+  struct Foo {
++
+      let bar: Int
++
+  }
+```
+
+Function bodies and other scopes have blank lines removed:
+
+```diff
+  func foo() {
+-
+      bar()
+-
+  }
+```
+
+With `--scope-lines-without-padding 3`, short type bodies skip padding:
+
+```diff
+  enum Error {
+-
+      case networkError
+      case timeout
+-
   }
 ```
 

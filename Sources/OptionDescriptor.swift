@@ -580,6 +580,12 @@ struct _Descriptors {
         help: "Comma-delimited list of function calls to ignore for guardAtTopOfScope",
         keyPath: \.guardAtTopOfScopeExceptions
     )
+    let scopeLinesWithoutPadding = OptionDescriptor(
+        argumentName: "scope-lines-without-padding",
+        displayName: "Scope Lines Without Padding",
+        help: "Max lines in a type body to skip padding (0 = always pad)",
+        keyPath: \.scopeLinesWithoutPadding
+    )
 
     // MARK: - Upstream Descriptors
 
