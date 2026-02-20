@@ -45,6 +45,7 @@ let ruleRegistry: [String: FormatRule] = [
     "fileMacro": .fileMacro,
     "forWhere": .forWhere,
     "genericExtensions": .genericExtensions,
+    "guardAtTopOfScope": .guardAtTopOfScope,
     "headerFileName": .headerFileName,
     "hoistAwait": .hoistAwait,
     "hoistPatternLet": .hoistPatternLet,
