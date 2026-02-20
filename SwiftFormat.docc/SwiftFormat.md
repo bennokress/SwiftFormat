@@ -23,6 +23,7 @@ These rules report violations but do not automatically fix code. When SwiftForma
 ```
 # Custom Rules (lint-only)
 --lint-only guardAtTopOfScope
+--lint-only modifierAfterMultilineBlock
 ```
 
 ### Rules with autofix
@@ -40,4 +41,5 @@ These rules detect violations and automatically fix them. Use `--enable` so they
 ### Rules
 
 - <doc:GuardAtTopOfScope>
+- <doc:ModifierAfterMultilineBlock>
 - <doc:ScopePadding>
