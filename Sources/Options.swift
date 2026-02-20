@@ -863,6 +863,7 @@ public struct FormatOptions: CustomStringConvertible {
     // MARK: - Custom Fork Options
 
     public var guardAtTopOfScopeExceptions: Set<String>
+    public var scopeLinesWithoutPadding: Int
 
     // MARK: - Upstream Options
 
@@ -1021,6 +1022,7 @@ public struct FormatOptions: CustomStringConvertible {
     public static let `default` = FormatOptions()
 
     public init(guardAtTopOfScopeExceptions: Set<String> = [], // Custom Fork Option
+                scopeLinesWithoutPadding: Int = 0, // Custom Fork Option
                 lineAfterMarks: Bool = true,
                 indent: String = "    ",
                 linebreak: String = "\n",
@@ -1167,6 +1169,7 @@ public struct FormatOptions: CustomStringConvertible {
                 timeout: TimeInterval = 1)
     {
         self.guardAtTopOfScopeExceptions = guardAtTopOfScopeExceptions // Custom Fork Option
+        self.scopeLinesWithoutPadding = scopeLinesWithoutPadding // Custom Fork Option
         self.lineAfterMarks = lineAfterMarks
         self.indent = indent
         self.linebreak = linebreak

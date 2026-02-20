@@ -31,7 +31,8 @@ These rules detect violations and automatically fix them. Use `--enable` so they
 
 ```
 # Custom Rules (autofix)
-# --enable upcomingAutofixRule
+--enable scopePadding
+--scope-lines-without-padding 3
 ```
 
 ## Topics
@@ -39,3 +40,4 @@ These rules detect violations and automatically fix them. Use `--enable` so they
 ### Rules
 
 - <doc:GuardAtTopOfScope>
+- <doc:ScopePadding>
