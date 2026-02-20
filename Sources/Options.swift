@@ -803,6 +803,12 @@ public enum DocCommentMode: String, CaseIterable {
 /// Configuration options for formatting. These aren't actually used by the
 /// Formatter class itself, but it makes them available to the format rules.
 public struct FormatOptions: CustomStringConvertible {
+    // MARK: - Custom Fork Options
+
+    public var guardAtTopOfScopeExceptions: Set<String>
+
+    // MARK: - Upstream Options
+
     public var lineAfterMarks: Bool
     public var indent: String
     public var linebreak: String
@@ -955,7 +961,8 @@ public struct FormatOptions: CustomStringConvertible {
 
     public static let `default` = FormatOptions()
 
-    public init(lineAfterMarks: Bool = true,
+    public init(guardAtTopOfScopeExceptions: Set<String> = [], // Custom Fork Option
+                lineAfterMarks: Bool = true,
                 indent: String = "    ",
                 linebreak: String = "\n",
                 semicolons: SemicolonsMode = .inlineOnly,
@@ -1098,6 +1105,7 @@ public struct FormatOptions: CustomStringConvertible {
                 markdownFiles: MarkdownFormattingMode = .ignore,
                 timeout: TimeInterval = 1)
     {
+        self.guardAtTopOfScopeExceptions = guardAtTopOfScopeExceptions // Custom Fork Option
         self.lineAfterMarks = lineAfterMarks
         self.indent = indent
         self.linebreak = linebreak
