@@ -15,5 +15,6 @@ enum CustomDefaultExclusions {
         .guardAtTopOfScope,
         .scopePadding,
         .modifierAfterMultilineBlock,
+        .earlyReturn,
     ]
 }

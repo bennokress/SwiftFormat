@@ -128,6 +128,7 @@
 * [blankLinesAfterGuardStatements](#blankLinesAfterGuardStatements)
 * [blockComments](#blockComments)
 * [commonTypos](#commonTypos)
+* [earlyReturn](#earlyReturn)
 * [emptyExtensions](#emptyExtensions)
 * [forWhere](#forWhere)
 * [ifExpressions](#ifExpressions)
@@ -994,6 +995,48 @@ Remove duplicate import statements.
     import A
 -   import B
   #endif
+```
+
+</details>
+<br/>
+
+## earlyReturn
+
+Flag return statements that are not inside guard-else bodies or at the end of an allowed scope.
+
+<details>
+<summary>Examples</summary>
+
+Return statements should only appear in `guard ... else { }` bodies or as the
+last statement of a function, closure, computed property, or switch case.
+
+```diff
+  func process(value: Int?) -> String {
+-     if value != nil {
+-         return "has value"
+-     }
+-     return "no value"
++     guard let value else { return "no value" }
++     return "has value: \(value)"
+  }
+```
+
+Returns as the last statement of switch cases and closures are allowed:
+
+```swift
+// OK:
+func status(for code: Int) -> String {
+    switch code {
+    case 200:
+        return "OK"
+    default:
+        return "Unknown"
+    }
+}
+
+let result = items.map { item in
+    return item.transformed
+}
 ```
 
 </details>
