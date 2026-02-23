@@ -32,6 +32,7 @@ let ruleRegistry: [String: FormatRule] = [
     "docComments": .docComments,
     "docCommentsBeforeModifiers": .docCommentsBeforeModifiers,
     "duplicateImports": .duplicateImports,
+    "earlyReturn": .earlyReturn,
     "elseOnSameLine": .elseOnSameLine,
     "emptyBraces": .emptyBraces,
     "emptyExtensions": .emptyExtensions,
