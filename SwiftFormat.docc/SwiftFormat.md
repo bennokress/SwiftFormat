@@ -25,6 +25,7 @@ These rules report violations but do not automatically fix code. When SwiftForma
 --lint-only guardAtTopOfScope
 --lint-only modifierAfterMultilineBlock
 --lint-only earlyReturn
+--lint-only noDefer
 ```
 
 ### Rules with autofix
@@ -45,3 +46,4 @@ These rules detect violations and automatically fix them. Use `--enable` so they
 - <doc:ModifierAfterMultilineBlock>
 - <doc:EarlyReturn>
 - <doc:ScopePadding>
+- <doc:NoDefer>
