@@ -136,6 +136,7 @@
 * [isEmpty](#isEmpty)
 * [markTypes](#markTypes)
 * [modifierAfterMultilineBlock](#modifierAfterMultilineBlock)
+* [noDefer](#noDefer)
 * [noExplicitOwnership](#noExplicitOwnership)
 * [noGuardInTests](#noGuardInTests)
 * [organizeDeclarations](#organizeDeclarations)
@@ -1912,6 +1913,10 @@ Ensure that all modifiers are on the same line as the declaration keyword.
 ## nestedIf
 
 Merge nested if statements using comma-delimited conditions or else-if chains.
+Merge nested if statements into a single statement with comma-delimited conditions.
+## noDefer
+
+Flag defer statements; prefer explicit cleanup at every exit point.
 
 <details>
 <summary>Examples</summary>
@@ -1922,6 +1927,23 @@ Merge nested if statements using comma-delimited conditions or else-if chains.
 + if isValid, isEnabled {
           performAction()
 -     }
+`defer` hides cleanup at the bottom of the scope and interacts poorly with
+`guardAtTopOfScope`. For short bodies, repeat the call at every exit point;
+for longer bodies, extract a helper and call it at each exit point.
+
+```diff
+  func loadData() throws -> Data {
+-     lock.lock()
+-     defer { lock.unlock() }
+-     guard let data = try? read() else { throw Error.missing }
+-     return data
++     lock.lock()
++     guard let data = try? read() else {
++         lock.unlock()
++         throw Error.missing
++     }
++     lock.unlock()
++     return data
   }
 ```
 
