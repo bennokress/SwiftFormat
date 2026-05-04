@@ -288,7 +288,7 @@ final class GuardAtTopOfScopeTests: XCTestCase {
         }
         """
         testFormatting(for: input, rule: .guardAtTopOfScope,
-                       exclude: [.wrapConditionalBodies, .blankLinesAfterGuardStatements])
+                       exclude: [.wrapConditionalBodies, .blankLinesAfterGuardStatements, .noDefer])
     }
 
     func testGuardAtTopOfWhileBody() {
