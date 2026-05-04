@@ -63,6 +63,7 @@ let ruleRegistry: [String: FormatRule] = [
     "modifierOrder": .modifierOrder,
     "modifiersOnSameLine": .modifiersOnSameLine,
     "nestedIf": .nestedIf,
+    "noDefer": .noDefer,
     "noExplicitOwnership": .noExplicitOwnership,
     "noForceTryInTests": .noForceTryInTests,
     "noForceUnwrapInTests": .noForceUnwrapInTests,
