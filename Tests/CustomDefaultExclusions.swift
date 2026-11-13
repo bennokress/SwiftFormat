@@ -16,5 +16,6 @@ enum CustomDefaultExclusions {
         .scopePadding,
         .modifierAfterMultilineBlock,
         .earlyReturn,
+        .missingDocComments,
     ]
 }

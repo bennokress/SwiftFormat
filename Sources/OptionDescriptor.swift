@@ -587,6 +587,24 @@ struct _Descriptors {
         help: "Max lines in a type body to skip padding (0 = always pad)",
         keyPath: \.scopeLinesWithoutPadding
     )
+    let missingDocCommentsExemptNames = OptionDescriptor(
+        argumentName: "doc-exempt-names",
+        displayName: "Missing Doc Comments Exempt Names",
+        help: "Comma-delimited declaration names that need no doc comment",
+        keyPath: \.missingDocCommentsExemptNames
+    )
+    let missingDocCommentsExemptAttributes = OptionDescriptor(
+        argumentName: "doc-exempt-attributes",
+        displayName: "Missing Doc Comments Exempt Attributes",
+        help: "Comma-delimited property attributes (without @) that need no doc comment",
+        keyPath: \.missingDocCommentsExemptAttributes
+    )
+    let missingDocCommentsExemptConformances = OptionDescriptor(
+        argumentName: "doc-exempt-conformances",
+        displayName: "Missing Doc Comments Exempt Conformances",
+        help: "Comma-delimited protocols whose conforming types need no doc comments on properties",
+        keyPath: \.missingDocCommentsExemptConformances
+    )
 
     // MARK: - Upstream Descriptors
 

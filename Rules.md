@@ -131,10 +131,11 @@
 * [earlyReturn](#earlyReturn)
 * [emptyExtensions](#emptyExtensions)
 * [forWhere](#forWhere)
-* [ifExpressions](#ifExpressions)
 * [guardAtTopOfScope](#guardAtTopOfScope)
+* [ifExpressions](#ifExpressions)
 * [isEmpty](#isEmpty)
 * [markTypes](#markTypes)
+* [missingDocComments](#missingDocComments)
 * [modifierAfterMultilineBlock](#modifierAfterMultilineBlock)
 * [noDefer](#noDefer)
 * [noExplicitOwnership](#noExplicitOwnership)
@@ -1887,6 +1888,39 @@ Option | Description
 </details>
 <br/>
 
+## missingDocComments
+
+Require doc comments on non-private declarations, with Parameter, Returns and Throws sections where they apply.
+
+Option | Description
+--- | ---
+`--doc-exempt-names` | Comma-delimited declaration names that need no doc comment
+`--doc-exempt-attributes` | Comma-delimited property attributes (without @) that need no doc comment
+`--doc-exempt-conformances` | Comma-delimited protocols whose conforming types need no doc comments on properties
+
+<details>
+<summary>Examples</summary>
+
+Every declaration that other files can see carries a doc comment. A function
+documents each of its parameters, its return value and the errors it throws.
+
+```diff
+- func total(of items: [Item]) throws -> Int {
++ /// The sum of all item prices.
++ ///
++ /// - Parameter items: The items to add up.
++ /// - Returns: The total in cents.
++ /// - Throws: `PriceError` if an item has no price.
++ func total(of items: [Item]) throws -> Int {
+```
+
+Private and fileprivate declarations, `override`s, a parameterless `init()`,
+and the names, property attributes and conformances in `--doc-exempt-names`,
+`--doc-exempt-attributes` and `--doc-exempt-conformances` are exempt.
+
+</details>
+<br/>
+
 ## modifierAfterMultilineBlock
 
 Flag modifiers chained after multi-line blocks.
@@ -1972,10 +2006,6 @@ Ensure that all modifiers are on the same line as the declaration keyword.
 ## nestedIf
 
 Merge nested if statements using comma-delimited conditions or else-if chains.
-Merge nested if statements into a single statement with comma-delimited conditions.
-## noDefer
-
-Flag defer statements; prefer explicit cleanup at every exit point.
 
 <details>
 <summary>Examples</summary>
@@ -1986,6 +2016,31 @@ Flag defer statements; prefer explicit cleanup at every exit point.
 + if isValid, isEnabled {
           performAction()
 -     }
+  }
+```
+
+```diff
+  if isValid {
+      performAction()
+- } else {
+-     if isEnabled {
+-         performFallback()
+-     }
++ } else if isEnabled {
++     performFallback()
+  }
+```
+
+</details>
+<br/>
+
+## noDefer
+
+Flag defer statements; prefer explicit cleanup at every exit point.
+
+<details>
+<summary>Examples</summary>
+
 `defer` hides cleanup at the bottom of the scope and interacts poorly with
 `guardAtTopOfScope`. For short bodies, repeat the call at every exit point;
 for longer bodies, extract a helper and call it at each exit point.
@@ -2003,18 +2058,6 @@ for longer bodies, extract a helper and call it at each exit point.
 +     }
 +     lock.unlock()
 +     return data
-  }
-```
-
-```diff
-  if isValid {
-      performAction()
-- } else {
--     if isEnabled {
--         performFallback()
--     }
-+ } else if isEnabled {
-+     performFallback()
   }
 ```
 
@@ -3775,6 +3818,19 @@ Option | Description
 ## repeatedGuard
 
 Merge consecutive guard statements that have identical bodies.
+
+<details>
+<summary>Examples</summary>
+
+```diff
+- guard isValid else { return }
+- guard isEnabled else { return }
++ guard isValid, isEnabled else { return }
+```
+
+</details>
+<br/>
+
 ## scopePadding
 
 Enforce blank lines at start/end of type bodies, remove them from other scopes.
@@ -3786,10 +3842,6 @@ Option | Description
 <details>
 <summary>Examples</summary>
 
-```diff
-- guard isValid else { return }
-- guard isEnabled else { return }
-+ guard isValid, isEnabled else { return }
 Type bodies (struct, class, enum, extension, protocol, actor) get padded
 with exactly one blank line at the start and end:
 

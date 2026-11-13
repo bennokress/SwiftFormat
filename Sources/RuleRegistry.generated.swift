@@ -59,6 +59,7 @@ let ruleRegistry: [String: FormatRule] = [
     "linebreakAtEndOfFile": .linebreakAtEndOfFile,
     "linebreaks": .linebreaks,
     "markTypes": .markTypes,
+    "missingDocComments": .missingDocComments,
     "modifierAfterMultilineBlock": .modifierAfterMultilineBlock,
     "modifierOrder": .modifierOrder,
     "modifiersOnSameLine": .modifiersOnSameLine,

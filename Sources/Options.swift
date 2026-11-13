@@ -914,6 +914,9 @@ public struct FormatOptions: CustomStringConvertible {
 
     public var guardAtTopOfScopeExceptions: Set<String>
     public var scopeLinesWithoutPadding: Int
+    public var missingDocCommentsExemptNames: Set<String>
+    public var missingDocCommentsExemptAttributes: Set<String>
+    public var missingDocCommentsExemptConformances: Set<String>
 
     // MARK: - Upstream Options
 
@@ -1092,6 +1095,9 @@ public struct FormatOptions: CustomStringConvertible {
 
     public init(guardAtTopOfScopeExceptions: Set<String> = [], // Custom Fork Option
                 scopeLinesWithoutPadding: Int = 0, // Custom Fork Option
+                missingDocCommentsExemptNames: Set<String> = ["body", "perform", "typeDisplayRepresentation"], // Custom Fork Option
+                missingDocCommentsExemptAttributes: Set<String> = ["State", "Environment", "FocusState", "Namespace", "Parameter"], // Custom Fork Option
+                missingDocCommentsExemptConformances: Set<String> = ["AppIntent"], // Custom Fork Option
                 lineAfterMarks: Bool = true,
                 indent: String = "    ",
                 linebreak: String = "\n",
@@ -1257,6 +1263,9 @@ public struct FormatOptions: CustomStringConvertible {
     {
         self.guardAtTopOfScopeExceptions = guardAtTopOfScopeExceptions // Custom Fork Option
         self.scopeLinesWithoutPadding = scopeLinesWithoutPadding // Custom Fork Option
+        self.missingDocCommentsExemptNames = missingDocCommentsExemptNames // Custom Fork Option
+        self.missingDocCommentsExemptAttributes = missingDocCommentsExemptAttributes // Custom Fork Option
+        self.missingDocCommentsExemptConformances = missingDocCommentsExemptConformances // Custom Fork Option
         self.lineAfterMarks = lineAfterMarks
         self.indent = indent
         self.linebreak = linebreak

@@ -696,7 +696,7 @@ final class FormatterTests: XCTestCase {
             XCTAssertEqual(try sourceCode(
                 for: format(
                     input,
-                    rules: FormatRules.all,
+                    rules: FormatRules.all(except: CustomDefaultExclusions.rules),
                     range: range
                 ).tokens
             ),
