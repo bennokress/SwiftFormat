@@ -55,6 +55,7 @@
 		01BBD85C21DAA2A700457380 /* Globs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBD85821DAA2A000457380 /* Globs.swift */; };
 		01BBD85E21DAA30700457380 /* GlobsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BBD85D21DAA30700457380 /* GlobsTests.swift */; };
 		01BEC5772236E1A700D0DD83 /* MetadataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BEC5762236E1A700D0DD83 /* MetadataTests.swift */; };
+		2B0D0C0E2EB5000100CDE002 /* CustomDefaultExclusions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0D0C0E2EB5000100CDE001 /* CustomDefaultExclusions.swift */; };
 		01D3B28624E9C9C700888DE0 /* FormattingHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D3B28524E9C9C700888DE0 /* FormattingHelpers.swift */; };
 		01F17E821E25870700DCD359 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F17E811E25870700DCD359 /* CommandLine.swift */; };
 		01F17E831E25870700DCD359 /* CommandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F17E811E25870700DCD359 /* CommandLine.swift */; };
@@ -239,6 +240,7 @@
 		01BBD85821DAA2A000457380 /* Globs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globs.swift; sourceTree = "<group>"; };
 		01BBD85D21DAA30700457380 /* GlobsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobsTests.swift; sourceTree = "<group>"; };
 		01BEC5762236E1A700D0DD83 /* MetadataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataTests.swift; sourceTree = "<group>"; };
+		2B0D0C0E2EB5000100CDE001 /* CustomDefaultExclusions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDefaultExclusions.swift; sourceTree = "<group>"; };
 		01D3B28524E9C9C700888DE0 /* FormattingHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattingHelpers.swift; sourceTree = "<group>"; };
 		01F17E811E25870700DCD359 /* CommandLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLine.swift; sourceTree = "<group>"; };
 		01F17E841E258A4900DCD359 /* CommandLineTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandLineTests.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				01BBD85D21DAA30700457380 /* GlobsTests.swift */,
 				01F3DF8F1DBA003E00454944 /* InferenceTests.swift */,
 				01BEC5762236E1A700D0DD83 /* MetadataTests.swift */,
+				2B0D0C0E2EB5000100CDE001 /* CustomDefaultExclusions.swift */,
 				E43EF47B202FF47C00E523BD /* OptionDescriptorTests.swift */,
 				01426E4D23AA29B100E7D871 /* ParsingHelpersTests.swift */,
 				2EF737532C5E897800128F91 /* ProjectFilePaths.swift */,
@@ -927,6 +930,7 @@
 				E43EF47C202FF47C00E523BD /* OptionDescriptorTests.swift in Sources */,
 				01045A9E2119A37F00D2BE3D /* ArgumentsTests.swift in Sources */,
 				01BEC5772236E1A700D0DD83 /* MetadataTests.swift in Sources */,
+				2B0D0C0E2EB5000100CDE002 /* CustomDefaultExclusions.swift in Sources */,
 				01F3DF901DBA003E00454944 /* InferenceTests.swift in Sources */,
 				015CE8B12B448CCE00924504 /* SingularizeTests.swift in Sources */,
 			);
